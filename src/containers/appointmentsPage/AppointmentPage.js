@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { AppointmentForm } from '../../components/appointmentForm/AppointmentForm';
+import { TileList } from '../../components/contactForm/tileList/TileList';
 
 export default function AppointmentPage({appointments, contacts, addAppointment}) { 
 
   const [title, setTitle] = useState(''); 
-  const [contact, setContact] = useState(''); 
+  const [contact, setContact] = useState(
+    contacts.length > 0 ? contacts[0].name : ""
+  );
   const [date, setDate] = useState(''); 
   const [time, setTime] = useState('');
 
@@ -37,6 +40,7 @@ export default function AppointmentPage({appointments, contacts, addAppointment}
       <hr /> 
       <section>
         <h2>Appointments</h2>
+        <TileList tiles ={appointments}/>
       </section>
     </>
   )
